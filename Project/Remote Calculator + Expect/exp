@@ -1,0 +1,11 @@
+#!/usr/bin/expect --
+
+set timeout -1
+set N1 [lindex $argv 0]
+set N2 [lindex $argv 1]
+set Operation [lindex $argv 2]
+spawn ssh 13176@35.167.127.201 ~/myScript
+expect "N1:" { send "$N1\r" }
+expect "N2:" { send "$N2\r" }
+expect "Operation(+, -, *, /):" { send "$Operation\r" }
+expect " " send {"exit\r"}
